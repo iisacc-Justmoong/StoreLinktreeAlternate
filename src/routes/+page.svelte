@@ -1,47 +1,127 @@
 <script>
-  import Counter from '$lib/Counter.svelte'
-  const svelteLogo = '/svelte.svg'
-  const viteLogo = '/vite.svg'
+  const storeUrl = 'https://smartstore.naver.com/benasis'
 </script>
 
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<svelte:head>
+  <title>최원준가구갤러리</title>
+  <meta name="description" content="BENASIS smart store links" />
+</svelte:head>
 
-  <div class="card">
-    <Counter />
-  </div>
+<main class="page linktree">
+  <section class="tree-card">
+    <div class="avatar" aria-hidden="true">B</div>
+    <h1>최원준가구갤러리</h1>
+    <p class="handle">@smartstore</p>
 
-  <p>
-    Check out
-    <a href="https://svelte.dev/docs/kit/introduction" target="_blank" rel="noreferrer">SvelteKit</a>,
-    the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p>
+    <nav class="link-list">
+      <a class="link-btn primary" href={storeUrl} target="_blank" rel="noopener noreferrer">
+        네이버 스마트스토어 방문하기
+      </a>
+    </nav>
+  </section>
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
+  .linktree {
+    min-height: calc(100vh - 32px);
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
   }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+
+  .tree-card {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 42px);
+    border-radius: 32px;
+    border: 1px solid var(--color-border-secondary);
+    background:
+      var(--color-surface-primary);
+    box-shadow: 0 24px 44px var(--lvrs-shadow-strong);
+    text-align: center;
   }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
+
+  .avatar {
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    margin: 0 auto 12px;
+    display: grid;
+    place-items: center;
+    font-size: var(--font-header2);
+    font-weight: var(--font-weight-bold);
+    color: var(--lvrs-accent-white);
+    background: linear-gradient(145deg, var(--color-accent-primary), var(--lvrs-accent-blue-bright));
   }
-  .read-the-docs {
-    color: #888;
+
+  h1 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-title2);
+    line-height: 1.06;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .handle {
+    margin-top: 6px;
+    color: var(--color-text-octonary);
+    font-size: var(--font-caption);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .link-list {
+    margin-top: 22px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .link-btn {
+    min-height: 56px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border-primary);
+    background: var(--color-surface-secondary);
+    color: var(--color-text-primary);
+    font-size: var(--font-body);
+    font-weight: var(--font-weight-semibold);
+    display: grid;
+    place-items: center;
+    transition:
+      transform 140ms ease,
+      background-color 140ms ease,
+      border-color 140ms ease;
+  }
+
+  .link-btn:hover {
+    transform: translateY(-1px);
+    background: var(--color-surface-tertiary);
+  }
+
+  .link-btn.primary {
+    color: var(--lvrs-accent-white);
+    border-color: var(--lvrs-accent-transparent);
+    background: linear-gradient(
+      140deg,
+      var(--lvrs-accent-base-sky-vivid),
+      var(--lvrs-accent-light-sky-vivid)
+    );
+  }
+
+  .link-btn.primary:hover {
+    background: linear-gradient(
+      140deg,
+      var(--lvrs-accent-base-sky-vivid-birch),
+      var(--lvrs-accent-light-sky-vivid-birch)
+    );
+  }
+
+  .link-btn.ghost {
+    cursor: pointer;
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: var(--font-title);
+    }
   }
 </style>

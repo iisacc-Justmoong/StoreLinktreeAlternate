@@ -1,79 +1,578 @@
+@import '/font/pretendard-subset.css';
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Base colors */
+  --color-background-primary: #f5f7fb;
+  --color-accent-primary: #007aff;
+  --color-accent-danger: #d9342b;
+  --color-accent-success: #229a5a;
+  --color-accent-warning: #c78500;
+  --color-accent-info: #5865f2;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Text tones */
+  --color-text-primary: #121826;
+  --color-text-secondary: #2e3647;
+  --color-text-tertiary: #4e576b;
+  --color-text-septenary: #6e788f;
+  --color-text-octonary: #8c96aa;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Surface colors */
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f8fafd;
+  --color-surface-tertiary: #eef2f7;
+
+  /* Border colors */
+  --color-border-primary: #d4dbea;
+  --color-border-secondary: #e1e7f2;
+  --color-border-tertiary: #e8edf6;
+
+  /* Typography scale */
+  --font-title: 48px;
+  --font-title2: 36px;
+  --font-header: 24px;
+  --font-header2: 20px;
+  --font-body: 17px;
+  --font-description: 16px;
+  --font-caption: 14px;
+  --font-family-base: 'Pretendard', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --lvrs-window: #f5f7fb;
+  --lvrs-panel-background01: #ffffff;
+  --lvrs-panel-background02: #fbfcfe;
+  --lvrs-panel-background03: #f7f9fc;
+  --lvrs-panel-background04: #f3f6fb;
+  --lvrs-panel-background05: #eef2f8;
+  --lvrs-panel-background06: #e9eff7;
+  --lvrs-panel-background07: #e4ebf5;
+  --lvrs-panel-background08: #dee7f3;
+  --lvrs-panel-background09: #d8e2ef;
+  --lvrs-panel-background10: #d1ddea;
+  --lvrs-panel-background11: #c9d7e6;
+  --lvrs-panel-background12: #c1d0e3;
+  --lvrs-window-alt: var(--lvrs-panel-background03);
+  --lvrs-sub-surface: var(--lvrs-panel-background04);
+  --lvrs-surface-solid: var(--lvrs-panel-background05);
+  --lvrs-surface-alt: var(--lvrs-panel-background06);
+  --lvrs-surface-ghost: var(--lvrs-panel-background02);
+  --lvrs-text-token-base: #111827;
+  --lvrs-text-token-title-header: #E5111827;
+  --lvrs-text-token-body: #CC111827;
+  --lvrs-text-token-description: #99111827;
+  --lvrs-text-token-caption: #80111827;
+  --lvrs-text-token-disabled: #4D111827;
+  --lvrs-title-header-color: #E5111827;
+  --lvrs-body-color: #CC111827;
+  --lvrs-description-color: #99111827;
+  --lvrs-caption-color: #80111827;
+  --lvrs-disabled-color: #4D111827;
+  --lvrs-text-primary: #E5111827;
+  --lvrs-text-secondary: #CC111827;
+  --lvrs-text-tertiary: #99111827;
+  --lvrs-text-septenary: #80111827;
+  --lvrs-text-octonary: #4D111827;
+  --lvrs-primary: #0a84ff;
+  --lvrs-accent: #0a84ff;
+  --lvrs-success: #229a5a;
+  --lvrs-warning: #c78500;
+  --lvrs-danger: #d9342b;
+  --lvrs-surface: #e2e8f2;
+  --lvrs-dark-grey10: #6d7585;
+  --lvrs-accent-tint: #1F0A84FF;
+  --lvrs-danger-tint: #1FD9342B;
+  --lvrs-primary-overlay: #400A84FF;
+  --lvrs-accent-overlay: #400A84FF;
+  --lvrs-danger-overlay: #40D9342B;
+  --lvrs-overlay-backdrop: #33000000;
+  --lvrs-shadow-strong: #1A0D1526;
+  --lvrs-stroke-soft: #c1ccdc;
+  --lvrs-accent-transparent: transparent;
+  --lvrs-accent-white: #FFFFFF;
+  --lvrs-accent-gray-light: #CED0D6;
+  --lvrs-accent-blue: #548AF7;
+  --lvrs-accent-red: #DB5C5C;
+  --lvrs-accent-slate: #43454A;
+  --lvrs-accent-green: #57965C;
+  --lvrs-accent-blue-muted: #25324D;
+  --lvrs-accent-orange-muted: #C77D55;
+  --lvrs-accent-green-muted: #253627;
+  --lvrs-accent-yellow: #F2C55C;
+  --lvrs-accent-red-brown-dark: #402929;
+  --lvrs-accent-gray: #868A91;
+  --lvrs-accent-yellow-muted: #D6AE58;
+  --lvrs-accent-brown-muted: #45322B;
+  --lvrs-accent-purple: #A571E6;
+  --lvrs-accent-brown-darker: #3D3223;
+  --lvrs-accent-charcoal: #1E1F22;
+  --lvrs-accent-gray-pale: #B4B8BF;
+  --lvrs-accent-blue-bright: #3574F0;
+  --lvrs-accent-purple-darker: #2F2936;
+  --lvrs-accent-gray-bright: #F0F1F2;
+  --lvrs-accent-rose: #E55765;
+  --lvrs-accent-rose-darker: #5E3838;
+  --lvrs-accent-gray-muted: #5A5D63;
+  --lvrs-accent-green-bright: #55A76A;
+  --lvrs-accent-red-muted: #BD5757;
+  --lvrs-accent-red-dark: #9C4E4E;
+  --lvrs-accent-red-darker: #7A4343;
+  --lvrs-accent-slate-muted: #6F737A;
+  --lvrs-accent-slate-darker: #6C707E;
+  --lvrs-accent-green-darker: #375239;
+  --lvrs-accent-light-yellow-vivid: #F4EC4F;
+  --lvrs-accent-deepest-black: #000000;
+  --lvrs-accent-lighter-indigo: #B589EC;
+  --lvrs-accent-lighter-orange: #CCA18A;
+  --lvrs-accent-light-orange: #E08855;
+  --lvrs-accent-light-sky: #5DA8D3;
+  --lvrs-accent-dim-green: #43A047;
+  --lvrs-accent-light-silver: #9DA0A8;
+  --lvrs-accent-darker-charcoal: #2B2D30;
+  --lvrs-accent-light-cyan-vivid: #1EDCFF;
+  --lvrs-accent-light-green: #76D275;
+  --lvrs-accent-pale-blue-vivid: #999DF7;
+  --lvrs-accent-light-rose: #DD507B;
+  --lvrs-accent-dim-teal: #24A394;
+  --lvrs-accent-light-cyan-vivid-birch: #29B6F6;
+  --lvrs-accent-base-sky-muted: #5D87A1;
+  --lvrs-accent-dim-orange: #9C5121;
+  --lvrs-accent-light-orange-vivid: #FB8835;
+  --lvrs-accent-deep-sky-vivid: #01579B;
+  --lvrs-accent-darker-indigo: #2C2255;
+  --lvrs-accent-base-sky: #3592C4;
+  --lvrs-accent-darker-rose-muted: #392A31;
+  --lvrs-accent-light-cyan: #40B6E0;
+  --lvrs-accent-light-yellow-vivid-birch: #FDEE21;
+  --lvrs-accent-base-red-vivid: #FF0D2A;
+  --lvrs-accent-light-amber-vivid: #FFA72A;
+  --lvrs-accent-darker-sky: #0F2648;
+  --lvrs-accent-base-sky-birch: #366ACF;
+  --lvrs-accent-deep-graphite: #515151;
+  --lvrs-accent-deep-amber-muted: #5E4D33;
+  --lvrs-accent-deep-red: #951B39;
+  --lvrs-accent-dim-red: #A42122;
+  --lvrs-accent-base-red: #D82F27;
+  --lvrs-accent-light-red-vivid: #EF5049;
+  --lvrs-accent-darker-green-vivid: #00701A;
+  --lvrs-accent-deep-green: #187E28;
+  --lvrs-accent-deepest-charcoal: #1F2023;
+  --lvrs-accent-dim-sky: #2D72B8;
+  --lvrs-accent-lighter-sky-vivid: #5890FF;
+  --lvrs-accent-base-green: #78D431;
+  --lvrs-accent-base-gray: #858C8C;
+  --lvrs-accent-dim-orange-birch: #9D5025;
+  --lvrs-accent-lighter-green-vivid: #9EEE69;
+  --lvrs-accent-base-amber: #BA9752;
+  --lvrs-accent-base-red-birch: #C62E53;
+  --lvrs-accent-bright-pearl: #E4E6E6;
+  --lvrs-accent-base-orange-vivid: #E97826;
+  --lvrs-accent-bright-blue-muted: #EBECF0;
+  --lvrs-accent-bright-blue-vivid: #F5F5FF;
+  --lvrs-accent-base-orange-vivid-birch: #FF7800;
+  --lvrs-accent-base-amber-vivid: #FFCC00;
+  --lvrs-accent-darker-charcoal-birch: #27282E;
+  --lvrs-accent-base-sky-cedar: #389FD6;
+  --lvrs-accent-light-sky-vivid: #588CF3;
+  --lvrs-accent-base-green-birch: #5FAD65;
+  --lvrs-accent-light-sky-birch: #6FAFD4;
+  --lvrs-accent-lighter-sky: #75AADB;
+  --lvrs-accent-deep-red-birch: #961B39;
+  --lvrs-accent-dim-magenta: #9A3D70;
+  --lvrs-accent-dim-magenta-birch: #9E2064;
+  --lvrs-accent-base-red-cedar: #C92037;
+  --lvrs-accent-base-red-dawn: #CD2335;
+  --lvrs-accent-bright-sky-muted: #DFE1E6;
+  --lvrs-accent-base-orange-vivid-cedar: #E66D17;
+  --lvrs-accent-light-orange-vivid-birch: #F07B3E;
+  --lvrs-accent-light-orange-vivid-cedar: #F58435;
+  --lvrs-accent-light-red-vivid-birch: #F8416D;
+  --lvrs-accent-pale-amber-vivid: #F9D88C;
+  --lvrs-accent-light-orange-vivid-dawn: #FC6D26;
+  --lvrs-accent-light-magenta-vivid: #FF31CA;
+  --lvrs-accent-deepest-sky: #0D1A2B;
+  --lvrs-accent-deepest-lime-muted: #10110E;
+  --lvrs-accent-dim-green-vivid: #10AA50;
+  --lvrs-accent-deep-green-vivid: #12924F;
+  --lvrs-accent-dim-sky-birch: #1B5A9A;
+  --lvrs-accent-base-teal: #21D789;
+  --lvrs-accent-dim-sky-cedar: #35538F;
+  --lvrs-accent-light-sky-cedar: #417BDC;
+  --lvrs-accent-light-sky-vivid-birch: #4285F4;
+  --lvrs-accent-light-sky-vivid-cedar: #4485F9;
+  --lvrs-accent-dim-indigo: #473788;
+  --lvrs-accent-light-sky-dawn: #4F93D1;
+  --lvrs-accent-base-cyan: #59A5BA;
+  --lvrs-accent-dim-green-vivid-birch: #5CE400;
+  --lvrs-accent-dim-orange-cedar: #90623E;
+  --lvrs-accent-pale-blue-vivid-birch: #999DF6;
+  --lvrs-accent-light-purple-muted: #AE72B2;
+  --lvrs-accent-lighter-teal-muted: #B8C4C2;
+  --lvrs-accent-bright-cyan-vivid: #BBE6FB;
+  --lvrs-accent-light-red: #DB5860;
+  --lvrs-accent-light-red-vivid-cedar: #EC3D2E;
+  --lvrs-accent-base-red-vivid-birch: #ED1C24;
+  --lvrs-accent-light-red-vivid-dawn: #ED402F;
+  --lvrs-accent-lighter-red-vivid: #F57B7C;
+  --lvrs-accent-bright-sky-muted-birch: #F7F8FA;
+  --lvrs-accent-light-red-vivid-ember: #F8416C;
+  --lvrs-accent-light-orange-vivid-ember: #FE9133;
+  --lvrs-accent-light-orange-vivid-flint: #FF9235;
+  --lvrs-accent-deepest-green-vivid: #004300;
+  --lvrs-accent-base-sky-vivid: #007AFF;
+  --lvrs-accent-dim-cyan-vivid: #0097CB;
+  --lvrs-accent-dim-cyan-vivid-birch: #00ADD7;
+  --lvrs-accent-base-cyan-vivid: #00AEFF;
+  --lvrs-accent-base-sky-vivid-birch: #0B8FFF;
+  --lvrs-accent-base-sky-vivid-cedar: #0D94F6;
+  --lvrs-accent-base-cyan-vivid-birch: #11A3DE;
+  --lvrs-accent-dim-cyan-vivid-cedar: #1287B1;
+  --lvrs-accent-dim-cyan-vivid-dawn: #18BBB7;
+  --lvrs-accent-dim-sky-dawn: #2376AB;
+  --lvrs-accent-dim-cyan: #248996;
+  --lvrs-accent-deep-blue: #282662;
+  --lvrs-accent-dim-sky-ember: #306998;
+  --lvrs-accent-dim-sky-flint: #375FAD;
+  --lvrs-accent-light-sky-vivid-dawn: #4387FB;
+  --lvrs-accent-base-sky-dawn: #498DB7;
+  --lvrs-accent-dim-green-birch: #499C54;
+  --lvrs-accent-light-teal-vivid: #4BFFDF;
+  --lvrs-accent-light-sky-ember: #509CD1;
+  --lvrs-accent-dim-cyan-muted: #59666C;
+  --lvrs-accent-light-sky-flint: #5A9FD4;
+  --lvrs-accent-light-cyan-birch: #60D0E7;
+  --lvrs-accent-deep-orange-muted: #614438;
+  --lvrs-accent-dim-purple: #662E8D;
+  --lvrs-accent-deep-lime-vivid: #669915;
+  --lvrs-accent-dim-lime: #729B1B;
+  --lvrs-accent-deep-red-cedar: #791514;
+  --lvrs-accent-lighter-sky-vivid-birch: #7AB7FE;
+  --lvrs-accent-lighter-indigo-vivid: #7F52FF;
+  --lvrs-accent-lighter-cyan-vivid: #81D8F7;
+  --lvrs-accent-base-lime: #8AC831;
+  --lvrs-accent-deep-red-vivid: #941F15;
+  --lvrs-accent-light-indigo: #9454DB;
+  --lvrs-accent-light-silver-birch: #9A9996;
+  --lvrs-accent-dim-magenta-cedar: #9F2064;
+  --lvrs-accent-lighter-indigo-vivid-birch: #A177F4;
+  --lvrs-accent-base-orange: #A36B4E;
+  --lvrs-accent-base-lime-birch: #A9C23A;
+  --lvrs-accent-dim-red-birch: #AD2524;
+  --lvrs-accent-light-amber: #BCAE79;
+  --lvrs-accent-base-red-ember: #C54D5B;
+  --lvrs-accent-dim-purple-vivid: #C700D4;
+  --lvrs-accent-base-purple-vivid: #C711E1;
+  --lvrs-accent-base-red-flint: #CD2032;
+  --lvrs-accent-bright-cyan-vivid-birch: #D3EFFC;
+  --lvrs-accent-dim-magenta-vivid: #DD00A1;
+  --lvrs-accent-base-rose-vivid: #DD1265;
+  --lvrs-accent-base-red-vivid-cedar: #E24329;
+  --lvrs-accent-light-red-birch: #E44857;
+  --lvrs-accent-bright-pearl-birch: #E5E5E5;
+  --lvrs-accent-base-yellow-vivid: #E7C200;
+  --lvrs-accent-base-amber-vivid-birch: #EDA200;
+  --lvrs-accent-light-red-vivid-flint: #EE4C2C;
+  --lvrs-accent-light-red-vivid-grove: #F23838;
+  --lvrs-accent-base-red-vivid-dawn: #F40A0B;
+  --lvrs-accent-base-amber-vivid-cedar: #F4C20E;
+  --lvrs-accent-lighter-red-vivid-birch: #F57C7C;
+  --lvrs-accent-base-yellow-vivid-birch: #F5E710;
+  --lvrs-accent-base-amber-vivid-dawn: #F9AF17;
+  --lvrs-accent-bright-red-vivid: #F9D8D2;
+  --lvrs-accent-lighter-red-vivid-cedar: #FB5F81;
+  --lvrs-accent-light-yellow-vivid-cedar: #FBDC3E;
+  --lvrs-accent-light-amber-vivid-birch: #FCA326;
+  --lvrs-accent-base-amber-vivid-ember: #FDB60D;
+  --lvrs-accent-lighter-yellow-vivid: #FDEF50;
+  --lvrs-accent-lighter-orange-vivid: #FE9E52;
+  --lvrs-accent-light-orange-vivid-grove: #FEA42C;
+  --lvrs-accent-bright-rose-vivid: #FEBBD0;
+  --lvrs-accent-bright-yellow-vivid: #FFFFFE;
+  --lvrs-accent-deep-cyan-vivid: #005A86;
+  --lvrs-accent-deep-cyan-vivid-birch: #006995;
+  --lvrs-accent-dim-sky-vivid: #0070C5;
+  --lvrs-accent-dim-cyan-vivid-ember: #0086B6;
+  --lvrs-accent-base-sky-vivid-dawn: #009DFF;
+  --lvrs-accent-deep-green-vivid-birch: #00A817;
+  --lvrs-accent-base-cyan-vivid-cedar: #00B2E9;
+  --lvrs-accent-deep-blue-vivid: #01009A;
+  --lvrs-accent-dim-sky-vivid-birch: #0173D9;
+  --lvrs-accent-deep-teal-vivid: #019486;
+  --lvrs-accent-base-cyan-vivid-dawn: #01AFE9;
+  --lvrs-accent-dim-green-vivid-cedar: #01B202;
+  --lvrs-accent-base-cyan-vivid-ember: #01BDEF;
+  --lvrs-accent-deepest-cyan-muted: #020303;
+  --lvrs-accent-deepest-indigo: #030107;
+  --lvrs-accent-base-sky-vivid-ember: #0498FF;
+  --lvrs-accent-base-cyan-vivid-flint: #06A7EB;
+  --lvrs-accent-base-cyan-vivid-grove: #07A6F0;
+  --lvrs-accent-base-sky-vivid-flint: #087CFA;
+  --lvrs-accent-dim-sky-vivid-cedar: #0F80CC;
+  --lvrs-accent-base-sky-vivid-grove: #0F99EE;
+  --lvrs-accent-deep-teal-vivid-birch: #0F9D58;
+  --lvrs-accent-base-green-vivid: #0FE90F;
+  --lvrs-accent-darker-teal: #176655;
+  --lvrs-accent-deep-sky: #1A476F;
+  --lvrs-accent-base-sky-vivid-harbor: #1B85F2;
+  --lvrs-accent-light-sky-vivid-ember: #1F58FF;
+  --lvrs-accent-dim-sky-grove: #1F5B98;
+  --lvrs-accent-deep-green-birch: #208A3C;
+  --lvrs-accent-base-teal-birch: #27D788;
+  --lvrs-accent-dim-sky-harbor: #2870BA;
+  --lvrs-accent-base-blue: #2A35BD;
+  --lvrs-accent-dim-sky-iris: #2C458F;
+  --lvrs-accent-light-sky-vivid-flint: #2C6BF7;
+  --lvrs-accent-deep-sky-birch: #2E436E;
+  --lvrs-accent-deep-sky-muted: #34495E;
+  --lvrs-accent-dim-green-cedar: #34A853;
+  --lvrs-accent-light-blue-vivid: #355CFF;
+  --lvrs-accent-base-blue-birch: #3945CD;
+  --lvrs-accent-light-green-vivid: #3BEA62;
+  --lvrs-accent-base-teal-cedar: #3CBEB1;
+  --lvrs-accent-light-blue-vivid-birch: #3F4CFE;
+  --lvrs-accent-base-teal-dawn: #41B883;
+  --lvrs-accent-light-cyan-vivid-cedar: #41D1FF;
+  --lvrs-accent-light-blue-vivid-cedar: #4249FF;
+  --lvrs-accent-deep-green-cedar: #49691F;
+  --lvrs-accent-light-cyan-vivid-dawn: #4AF7EE;
+  --lvrs-accent-light-sky-grove: #4D77CF;
+  --lvrs-accent-lighter-sky-vivid-cedar: #4D9FFF;
+  --lvrs-accent-light-cyan-cedar: #4DABCF;
+  --lvrs-accent-lighter-blue-vivid: #5258FF;
+  --lvrs-accent-light-sky-harbor: #5294CF;
+  --lvrs-accent-light-sky-iris: #529FDB;
+  --lvrs-accent-base-blue-cedar: #534BBA;
+  --lvrs-accent-light-blue: #564DE2;
+  --lvrs-accent-light-green-birch: #59D87B;
+  --lvrs-accent-base-green-cedar: #5BC447;
+  --lvrs-accent-lighter-sky-vivid-dawn: #5EA6F2;
+  --lvrs-accent-base-green-dawn: #60B258;
+  --lvrs-accent-light-sky-juniper: #6494C0;
+  --lvrs-accent-light-blue-vivid-dawn: #654FF0;
+  --lvrs-accent-light-sky-kite: #66A9DC;
+  --lvrs-accent-dim-indigo-vivid: #680AB4;
+  --lvrs-accent-lighter-sky-vivid-ember: #68AEFF;
+  --lvrs-accent-lighter-sky-vivid-flint: #6A99FB;
+  --lvrs-accent-lighter-blue-vivid-birch: #6C63FF;
+  --lvrs-accent-lighter-blue-vivid-cedar: #746EF7;
+  --lvrs-accent-lighter-blue: #7777E9;
+  --lvrs-accent-base-indigo: #7929D2;
+  --lvrs-accent-base-indigo-birch: #7B42BC;
+  --lvrs-accent-base-indigo-cedar: #8150BE;
+  --lvrs-accent-dim-lime-vivid: #81BC0A;
+  --lvrs-accent-dim-orange-dawn: #825845;
+  --lvrs-accent-light-green-cedar: #85D970;
+  --lvrs-accent-lighter-cyan: #8ACCCE;
+  --lvrs-accent-dim-purple-vivid-birch: #8B01D0;
+  --lvrs-accent-base-green-ember: #92D13D;
+  --lvrs-accent-light-indigo-birch: #955AE0;
+  --lvrs-accent-base-lime-cedar: #95C63D;
+  --lvrs-accent-base-purple-vivid-birch: #9913D4;
+  --lvrs-accent-pale-sky: #9CC4E8;
+  --lvrs-accent-base-purple-vivid-cedar: #A000F0;
+  --lvrs-accent-base-purple-muted: #A058A3;
+  --lvrs-accent-base-purple-muted-birch: #A05AA5;
+  --lvrs-accent-light-lime: #ABDA67;
+  --lvrs-accent-lighter-indigo-birch: #AF7FE4;
+  --lvrs-accent-pale-cyan-vivid: #B1E4FA;
+  --lvrs-accent-dim-lime-vivid-birch: #B3D107;
+  --lvrs-accent-dim-red-vivid: #B71422;
+  --lvrs-accent-dim-yellow-vivid: #B7C003;
+  --lvrs-accent-base-red-grove: #B83535;
+  --lvrs-accent-base-red-harbor: #B92D4E;
+  --lvrs-accent-light-purple-vivid: #BD34FE;
+  --lvrs-accent-dim-red-cedar: #C12127;
+  --lvrs-accent-dim-red-vivid-birch: #C3002F;
+  --lvrs-accent-dim-red-vivid-cedar: #C63D14;
+  --lvrs-accent-light-lime-birch: #CADB5F;
+  --lvrs-accent-dim-orange-vivid: #CC5F00;
+  --lvrs-accent-lighter-amber-muted: #CCBEA7;
+  --lvrs-accent-dim-purple-vivid-cedar: #CD13C0;
+  --lvrs-accent-light-magenta: #CD669A;
+  --lvrs-accent-base-magenta-vivid: #CF19B9;
+  --lvrs-accent-base-magenta: #DA3A98;
+  --lvrs-accent-base-red-iris: #DB3B4B;
+  --lvrs-accent-base-red-juniper: #DB4437;
+  --lvrs-accent-dim-red-vivid-dawn: #DD0031;
+  --lvrs-accent-light-red-cedar: #DE6F68;
+  --lvrs-accent-light-yellow: #E1DB59;
+  --lvrs-accent-base-orange-vivid-dawn: #E25A1C;
+  --lvrs-accent-base-red-vivid-ember: #E30C34;
+  --lvrs-accent-light-rose-birch: #E3557C;
+  --lvrs-accent-light-red-dawn: #E55C76;
+  --lvrs-accent-pale-red: #E5B1B4;
+  --lvrs-accent-base-magenta-vivid-birch: #E70488;
+  --lvrs-accent-lighter-purple-vivid: #E762F5;
+  --lvrs-accent-lighter-purple-vivid-birch: #E859FF;
+  --lvrs-accent-light-rose-vivid: #E9478C;
+  --lvrs-accent-base-red-vivid-flint: #EA222E;
+  --lvrs-accent-light-red-vivid-harbor: #EA4335;
+  --lvrs-accent-base-red-vivid-grove: #ED2226;
+  --lvrs-accent-light-red-vivid-iris: #ED5735;
+  --lvrs-accent-base-purple-vivid-dawn: #EF00FF;
+  --lvrs-accent-light-red-vivid-juniper: #EF775A;
+  --lvrs-accent-base-purple-vivid-ember: #F00CEE;
+  --lvrs-accent-light-purple-vivid-birch: #F229FF;
+  --lvrs-accent-base-red-vivid-harbor: #F25326;
+  --lvrs-accent-base-orange-vivid-ember: #F26522;
+  --lvrs-accent-light-orange-vivid-harbor: #F2814F;
+  --lvrs-accent-light-yellow-vivid-dawn: #F2DC55;
+  --lvrs-accent-bright-white: #F2F2F2;
+  --lvrs-accent-bright-white-birch: #F2F2F3;
+  --lvrs-accent-light-magenta-vivid-birch: #F330C1;
+  --lvrs-accent-base-amber-vivid-flint: #F4BD19;
+  --lvrs-accent-lighter-red-vivid-dawn: #F57C7B;
+  --lvrs-accent-light-rose-vivid-birch: #F65098;
+  --lvrs-accent-light-magenta-vivid-cedar: #F651BA;
+  --lvrs-accent-light-orange-vivid-iris: #F68C44;
+  --lvrs-accent-light-orange-vivid-juniper: #F69923;
+  --lvrs-accent-bright-orange: #F6DECE;
+  --lvrs-accent-base-orange-vivid-flint: #F7941E;
+  --lvrs-accent-light-orange-vivid-kite: #F79A23;
+  --lvrs-accent-base-red-vivid-iris: #F80000;
+  --lvrs-accent-lighter-red-vivid-ember: #F96B76;
+  --lvrs-accent-lighter-red-vivid-flint: #F9767C;
+  --lvrs-accent-pale-amber-vivid-birch: #F9DD9D;
+  --lvrs-accent-light-red-vivid-kite: #FA4347;
+  --lvrs-accent-lighter-red-vivid-grove: #FB815A;
+  --lvrs-accent-light-orange-vivid-laurel: #FB9B35;
+  --lvrs-accent-light-orange-vivid-meadow: #FB9C34;
+  --lvrs-accent-base-amber-vivid-grove: #FBBC05;
+  --lvrs-accent-bright-amber-vivid: #FBF0DF;
+  --lvrs-accent-light-orange-vivid-nimbus: #FC904F;
+  --lvrs-accent-light-orange-vivid-oak: #FC9144;
+  --lvrs-accent-light-amber-vivid-cedar: #FCC72B;
+  --lvrs-accent-lighter-amber-vivid: #FCDC53;
+  --lvrs-accent-lighter-red-vivid-harbor: #FD5B5A;
+  --lvrs-accent-base-amber-vivid-harbor: #FE9C00;
+  --lvrs-accent-light-orange-vivid-prairie: #FE9D35;
+  --lvrs-accent-lighter-orange-vivid-birch: #FE9F52;
+  --lvrs-accent-light-orange-vivid-quartz: #FEA034;
+  --lvrs-accent-lighter-orange-vivid-cedar: #FEAB6C;
+  --lvrs-accent-lighter-orange-vivid-dawn: #FEB57E;
+  --lvrs-accent-base-red-vivid-juniper: #FF0000;
+  --lvrs-accent-light-rose-vivid-cedar: #FF3F95;
+  --lvrs-accent-lighter-red-vivid-iris: #FF6164;
+  --lvrs-accent-base-orange-vivid-grove: #FF7200;
+  --lvrs-accent-lighter-red-vivid-juniper: #FF775A;
+  --lvrs-accent-light-orange-vivid-ridge: #FF9937;
+  --lvrs-accent-light-orange-vivid-solace: #FF9A34;
+  --lvrs-accent-base-amber-vivid-iris: #FF9E15;
+  --lvrs-accent-base-amber-vivid-juniper: #FFA100;
+  --lvrs-accent-base-amber-vivid-kite: #FFA800;
+  --lvrs-accent-light-amber-vivid-dawn: #FFAA1F;
+  --lvrs-accent-base-amber-vivid-laurel: #FFB504;
+  --lvrs-accent-base-amber-vivid-meadow: #FFB700;
+  --lvrs-accent-base-amber-vivid-nimbus: #FFBA0F;
+  --lvrs-accent-base-amber-vivid-oak: #FFC107;
+  --lvrs-accent-pale-orange-vivid: #FFC39C;
+  --lvrs-accent-base-amber-vivid-prairie: #FFCA00;
+  --lvrs-accent-lighter-amber-vivid-birch: #FFDC52;
+  --lvrs-accent-light-amber-vivid-ember: #FFDD35;
+  --lvrs-accent-light-yellow-vivid-ember: #FFE83D;
+  --lvrs-accent-light-yellow-vivid-flint: #FFE83E;
+  --lvrs-accent-pale-amber-vivid-cedar: #FFEA83;
+  --lvrs-accent-base-yellow-vivid-cedar: #FFF915;
+  --lvrs-accent-bright-amber-vivid-birch: #FFFEFC;
+  --lvrs-context-menu-surface: #38383c;
+  --lvrs-context-menu-divider: #38383c;
+  --lvrs-context-menu-item-selected-background: #0a84ff;
+  --lvrs-context-menu-item-inactive-background: #38383c;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+* {
+  box-sizing: border-box;
 }
-a:hover {
-  color: #535bf2;
+
+html {
+  width: 100%;
+  background-color: var(--color-background-primary);
 }
 
 body {
-  margin: 0;
+  max-width: 1080px;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
+  flex-direction: column;
+  padding: 16px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+p {
+  font-size: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  padding: 0;
+  margin: 0;
+  line-height: 1.5;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  aspect-ratio: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.page h1 {
+  font-size: var(--font-header);
+  margin: 0;
+}
+
+.page h2 {
+  margin: 16px 0 0;
+  font-size: var(--font-header2);
+}
+
+.page p,
+.page li {
+  color: var(--color-text-secondary);
+}
+
+.page ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.primary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 512px;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: transform 150ms ease,
+  background 150ms ease,
+  color 150ms ease;
+}
+
+.primary-cta:hover {
+  transform: translateY(-2px);
 }
