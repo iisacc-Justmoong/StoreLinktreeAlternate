@@ -4,7 +4,7 @@
 
 <svelte:head>
   <title>최원준가구갤러리</title>
-  <meta name="description" content="BENASIS smart store links" />
+  <meta name="description" content="최원준가구갤러리 스마트스토어 링크" />
 </svelte:head>
 
 <main class="page linktree">
