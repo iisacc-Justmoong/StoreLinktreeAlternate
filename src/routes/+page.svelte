@@ -1,7 +1,7 @@
 <script>
   const storeUrl = 'https://smartstore.naver.com/benasis'
-  const ytUrl = 'https://www.youtube.com/@cwj-2025'
-  // const instagramUrl =
+  const youtubeUrl = 'https://www.youtube.com/@cwj-2025'
+  const avatarUrl = '/smartstore-로고.jpg'
 </script>
 
 <svelte:head>
@@ -11,15 +11,15 @@
 
 <main class="page linktree">
   <section class="tree-card">
-    <div class="avatar" aria-hidden="true">B</div>
+    <div class="avatar-wrap" aria-hidden="true">
+      <img class="avatar-image" src={avatarUrl} alt="스마트스토어 로고" />
+    </div>
     <h1>최원준가구갤러리</h1>
-    <p class="handle">@smartstore</p>
-
     <nav class="link-list">
       <a class="link-btn ssprimary" href={storeUrl} target="_blank" rel="noopener noreferrer">
         네이버 스마트스토어 방문하기
       </a>
-      <a class="link-btn ytprimary" href={ytUrl} target="_blank" rel="noopener noreferrer">
+      <a class="link-btn ytprimary" href={youtubeUrl} target="_blank" rel="noopener noreferrer">
         공식 유튜브 방문하기
       </a>
     </nav>
@@ -41,23 +41,30 @@
     padding: clamp(24px, 5vw, 42px);
     border-radius: 32px;
     border: 1px solid var(--color-border-secondary);
-    background:
-      var(--color-surface-primary);
+    background: var(--color-surface-primary);
     box-shadow: 0 24px 44px var(--lvrs-shadow-strong);
     text-align: center;
   }
 
-  .avatar {
-    width: 74px;
-    height: 74px;
-    border-radius: 999px;
+  .avatar-wrap {
+    width: 80px;
+    height: 80px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     margin: 0 auto 12px;
-    display: grid;
-    place-items: center;
-    font-size: var(--font-header2);
-    font-weight: var(--font-weight-bold);
-    color: var(--lvrs-accent-white);
-    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-dim-green-vivid));
+    overflow: hidden;
+    border: 1px solid var(--color-border-primary);
+    box-shadow: 0 10px 20px var(--lvrs-shadow-strong);
+    background: var(--color-surface-secondary);
+  }
+
+  .avatar-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    clip-path: circle(50% at 50% 50%);
   }
 
   h1 {
@@ -66,14 +73,10 @@
     font-size: var(--font-title2);
     line-height: 1.06;
     font-weight: var(--font-weight-bold);
+    margin-top: 32px;
+    margin-bottom: 64px;
   }
 
-  .handle {
-    margin-top: 6px;
-    color: var(--color-text-octonary);
-    font-size: var(--font-caption);
-    font-weight: var(--font-weight-regular);
-  }
 
   .link-list {
     margin-top: 22px;
@@ -97,38 +100,45 @@
       border-color 140ms ease;
   }
 
-  .link-btn:hover {
-    transform: translateY(-1px);
-    background: var(--color-surface-tertiary);
-  }
-
   .link-btn.ssprimary {
     color: var(--lvrs-accent-white);
     border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-dim-green-vivid));
+    background: linear-gradient(
+      145deg,
+      var(--lvrs-accent-base-teal),
+      var(--lvrs-accent-dim-green-vivid)
+    );
   }
 
   .link-btn.ssprimary:hover {
-    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-base-green-vivid));
+    background: linear-gradient(
+      145deg,
+      var(--lvrs-accent-base-teal),
+      var(--lvrs-accent-base-green-vivid)
+    );
   }
 
   .link-btn.ytprimary {
     color: var(--lvrs-accent-white);
     border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(145deg, var( --lvrs-accent-base-red-vivid), var(--lvrs-accent-dim-red));
+    background: linear-gradient(
+      145deg,
+      var(--lvrs-accent-base-red-vivid),
+      var(--lvrs-accent-dim-red)
+    );
   }
 
   .link-btn.ytprimary:hover {
-    background: linear-gradient(145deg, var(--lvrs-accent-dim-red), var(--lvrs-accent-base-red-birch));
+    background: linear-gradient(
+      145deg,
+      var(--lvrs-accent-dim-red),
+      var(--lvrs-accent-base-red-birch)
+    );
+  }
 
-    .link-btn.ghost {
-      cursor: pointer;
-    }
-
-    @media (max-width: 640px) {
-      h1 {
-        font-size: var(--font-title);
-      }
+  @media (max-width: 640px) {
+    h1 {
+      font-size: var(--font-title);
     }
   }
 </style>
