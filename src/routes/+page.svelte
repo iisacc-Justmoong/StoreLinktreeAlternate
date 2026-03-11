@@ -52,7 +52,7 @@
     font-size: var(--font-header2);
     font-weight: var(--font-weight-bold);
     color: var(--lvrs-accent-white);
-    background: linear-gradient(145deg, var(--color-accent-primary), var(--lvrs-accent-blue-bright));
+    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-dim-green-vivid));
   }
 
   h1 {
@@ -100,19 +100,11 @@
   .link-btn.primary {
     color: var(--lvrs-accent-white);
     border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(
-      140deg,
-      var(--lvrs-accent-base-sky-vivid),
-      var(--lvrs-accent-light-sky-vivid)
-    );
+    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-dim-green-vivid));
   }
 
   .link-btn.primary:hover {
-    background: linear-gradient(
-      140deg,
-      var(--lvrs-accent-base-sky-vivid-birch),
-      var(--lvrs-accent-light-sky-vivid-birch)
-    );
+    background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-base-green-vivid));
   }
 
   .link-btn.ghost {
