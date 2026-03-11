@@ -1,5 +1,7 @@
 <script>
   const storeUrl = 'https://smartstore.naver.com/benasis'
+  const ytUrl = 'https://www.youtube.com/@cwj-2025'
+  // const instagramUrl =
 </script>
 
 <svelte:head>
@@ -14,8 +16,11 @@
     <p class="handle">@smartstore</p>
 
     <nav class="link-list">
-      <a class="link-btn primary" href={storeUrl} target="_blank" rel="noopener noreferrer">
+      <a class="link-btn ssprimary" href={storeUrl} target="_blank" rel="noopener noreferrer">
         네이버 스마트스토어 방문하기
+      </a>
+      <a class="link-btn ytprimary" href={ytUrl} target="_blank" rel="noopener noreferrer">
+        공식 유튜브 방문하기
       </a>
     </nav>
   </section>
@@ -97,23 +102,33 @@
     background: var(--color-surface-tertiary);
   }
 
-  .link-btn.primary {
+  .link-btn.ssprimary {
     color: var(--lvrs-accent-white);
     border-color: var(--lvrs-accent-transparent);
     background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-dim-green-vivid));
   }
 
-  .link-btn.primary:hover {
+  .link-btn.ssprimary:hover {
     background: linear-gradient(145deg, var(--lvrs-accent-base-teal), var(--lvrs-accent-base-green-vivid));
   }
 
-  .link-btn.ghost {
-    cursor: pointer;
+  .link-btn.ytprimary {
+    color: var(--lvrs-accent-white);
+    border-color: var(--lvrs-accent-transparent);
+    background: linear-gradient(145deg, var( --lvrs-accent-base-red-vivid), var(--lvrs-accent-dim-red));
   }
 
-  @media (max-width: 640px) {
-    h1 {
-      font-size: var(--font-title);
+  .link-btn.ytprimary:hover {
+    background: linear-gradient(145deg, var(--lvrs-accent-dim-red), var(--lvrs-accent-base-red-birch));
+
+    .link-btn.ghost {
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: var(--font-title);
+      }
     }
   }
 </style>
