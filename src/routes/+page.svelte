@@ -1,6 +1,7 @@
 <script>
   const storeUrl = 'https://smartstore.naver.com/benasis'
   const youtubeUrl = 'https://www.youtube.com/@cwj-2025'
+  const blogUrl = 'https://blog.naver.com/cojhhhhh'
   const avatarUrl = '/smartstore-로고.jpg'
 </script>
 
@@ -15,9 +16,13 @@
       <img class="avatar-image" src={avatarUrl} alt="스마트스토어 로고" />
     </div>
     <h1>최원준가구갤러리</h1>
+    <p>@jun3.3</p>
     <nav class="link-list">
       <a class="link-btn ssprimary" href={storeUrl} target="_blank" rel="noopener noreferrer">
         네이버 스마트스토어 방문하기
+      </a>
+      <a class="link-btn blprimary" href={blogUrl} target="_blank" rel="noopener noreferrer">
+        네이버 블로그 방문하기
       </a>
       <a class="link-btn ytprimary" href={youtubeUrl} target="_blank" rel="noopener noreferrer">
         공식 유튜브 방문하기
@@ -74,9 +79,11 @@
     line-height: 1.06;
     font-weight: var(--font-weight-bold);
     margin-top: 32px;
-    margin-bottom: 64px;
   }
 
+  p {
+    color: var(--lvrs-accent-gray);
+  }
 
   .link-list {
     margin-top: 22px;
@@ -133,6 +140,24 @@
       145deg,
       var(--lvrs-accent-dim-red),
       var(--lvrs-accent-base-red-birch)
+    );
+  }
+
+  .link-btn.blprimary {
+    color: var(--lvrs-accent-white);
+    border-color: var(--lvrs-accent-transparent);
+    background: linear-gradient(
+            145deg,
+            var(--lvrs-success),
+            var(--lvrs-accent-light-green)
+    );
+  }
+
+  .link-btn.blprimary:hover {
+    background: linear-gradient(
+            145deg,
+            var(--lvrs-accent-base-teal),
+            var(--lvrs-accent-dim-green-vivid)
     );
   }
 
