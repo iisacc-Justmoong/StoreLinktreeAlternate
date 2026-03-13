@@ -15,9 +15,9 @@
     <div class="avatar-wrap" aria-hidden="true">
       <img class="avatar-image" src={avatarUrl} alt="스마트스토어 로고" />
     </div>
-    <h1>최원준가구갤러리</h1>
-    <p>@jun3.3</p>
-    <nav class="link-list">
+    <h1 class="brand-title">최원준가구갤러리</h1>
+    <p class="brand-handle">@jun3.3</p>
+    <nav class="link-list" aria-label="외부 링크">
       <a class="link-btn ssprimary" href={storeUrl} target="_blank" rel="noopener noreferrer">
         네이버 스마트스토어 방문하기
       </a>
@@ -33,34 +33,73 @@
 
 <style>
   .linktree {
-    min-height: calc(100vh - 32px);
+    min-height: calc(100vh - (var(--page-shell-pad) * 2));
     margin-bottom: 0;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding: clamp(12px, 4vw, 32px) 0;
   }
 
   .tree-card {
-    width: 100%;
-    max-width: 560px;
+    --card-radius: 36px;
+    position: relative;
+    width: min(100%, 680px);
     margin: 0 auto;
-    padding: clamp(24px, 5vw, 42px);
-    border-radius: 32px;
-    border: 1px solid var(--color-border-secondary);
-    background: var(--color-surface-primary);
-    box-shadow: 0 24px 44px var(--lvrs-shadow-strong);
+    padding: clamp(28px, 5vw, 52px);
+    border-radius: var(--card-radius);
+    border: 1px solid var(--glass-stroke);
+    background:
+      linear-gradient(180deg, rgb(255 255 255 / 84%), rgb(248 250 252 / 94%)),
+      linear-gradient(135deg, rgb(255 255 255 / 36%), rgb(255 255 255 / 10%));
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(24px);
     text-align: center;
+    overflow: hidden;
+  }
+
+  .tree-card::before,
+  .tree-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .tree-card::before {
+    background:
+      radial-gradient(circle at top right, rgb(59 130 246 / 14%), transparent 28%),
+      radial-gradient(circle at bottom left, rgb(45 212 191 / 12%), transparent 30%);
+  }
+
+  .tree-card::after {
+    inset: 1px;
+    border-radius: calc(var(--card-radius) - 1px);
+    border: 1px solid rgb(255 255 255 / 28%);
+    background: linear-gradient(135deg, rgb(255 255 255 / 22%), transparent 30%, rgb(255 255 255 / 10%) 100%);
   }
 
   .avatar-wrap {
-    width: 80px;
-    height: 80px;
+    position: relative;
+    width: 104px;
+    height: 104px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    margin: 0 auto 12px;
+    margin: 0 auto 20px;
+    padding: 4px;
     overflow: hidden;
-    border: 1px solid var(--color-border-primary);
-    box-shadow: 0 10px 20px var(--lvrs-shadow-strong);
-    background: var(--color-surface-secondary);
+    border: 1px solid rgb(255 255 255 / 64%);
+    box-shadow: 0 18px 40px rgb(15 23 42 / 16%);
+    background: linear-gradient(145deg, rgb(255 255 255 / 94%), rgb(226 232 240 / 62%));
+  }
+
+  .avatar-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(96 165 250 / 18%), transparent 65%);
   }
 
   .avatar-image {
@@ -72,98 +111,158 @@
     clip-path: circle(50% at 50% 50%);
   }
 
-  h1 {
+  .brand-title {
+    position: relative;
+    z-index: 1;
     margin: 0;
     color: var(--color-text-primary);
-    font-size: var(--font-title2);
-    line-height: 1.06;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
     font-weight: var(--font-weight-bold);
-    margin-top: 32px;
+    margin-top: 0;
   }
 
-  p {
-    color: var(--lvrs-accent-gray);
+  .brand-handle {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    color: var(--color-text-tertiary);
+    font-size: 0.92rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 
   .link-list {
-    margin-top: 22px;
+    position: relative;
+    z-index: 1;
+    margin-top: 28px;
     display: grid;
-    gap: 12px;
+    gap: 14px;
   }
 
   .link-btn {
-    min-height: 56px;
-    border-radius: 16px;
-    border: 1px solid var(--color-border-primary);
-    background: var(--color-surface-secondary);
-    color: var(--color-text-primary);
-    font-size: var(--font-body);
+    --button-radius: 20px;
+    position: relative;
+    min-height: 64px;
+    padding: 18px 22px;
+    border-radius: var(--button-radius);
+    border: 1px solid rgb(255 255 255 / 22%);
+    color: var(--lvrs-accent-white);
+    font-size: var(--font-description);
     font-weight: var(--font-weight-semibold);
-    display: grid;
-    place-items: center;
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: var(--shadow-button);
+    overflow: hidden;
     transition:
-      transform 140ms ease,
-      background-color 140ms ease,
-      border-color 140ms ease;
+      transform 220ms ease,
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+  }
+
+  .link-btn::before,
+  .link-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .link-btn::before {
+    inset: 1px;
+    border-radius: calc(var(--button-radius) - 1px);
+    background: linear-gradient(135deg, rgb(255 255 255 / 20%), transparent 32%, rgb(255 255 255 / 10%) 100%);
+  }
+
+  .link-btn::after {
+    top: -30%;
+    bottom: -30%;
+    left: -120%;
+    right: auto;
+    width: 42%;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 38%), transparent);
+    transform: rotate(18deg);
+    opacity: 0;
   }
 
   .link-btn.ssprimary {
-    color: var(--lvrs-accent-white);
-    border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(
-      145deg,
-      var(--lvrs-accent-base-teal),
-      var(--lvrs-accent-dim-green-vivid)
-    );
+    background: linear-gradient(135deg, #0f766e, #22c55e 58%, #4ade80 100%);
   }
 
   .link-btn.ssprimary:hover {
-    background: linear-gradient(
-      145deg,
-      var(--lvrs-accent-base-teal),
-      var(--lvrs-accent-base-green-vivid)
-    );
+    box-shadow: 0 18px 34px rgb(34 197 94 / 30%);
   }
 
   .link-btn.ytprimary {
-    color: var(--lvrs-accent-white);
-    border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(
-      145deg,
-      var(--lvrs-accent-base-red-vivid),
-      var(--lvrs-accent-dim-red)
-    );
+    background: linear-gradient(135deg, #b91c1c, #ef4444 58%, #fb7185 100%);
   }
 
   .link-btn.ytprimary:hover {
-    background: linear-gradient(
-      145deg,
-      var(--lvrs-accent-dim-red),
-      var(--lvrs-accent-base-red-birch)
-    );
+    box-shadow: 0 18px 34px rgb(239 68 68 / 30%);
   }
 
   .link-btn.blprimary {
-    color: var(--lvrs-accent-white);
-    border-color: var(--lvrs-accent-transparent);
-    background: linear-gradient(
-            145deg,
-            var(--lvrs-success),
-            var(--lvrs-accent-light-green)
-    );
+    background: linear-gradient(135deg, #16a34a, #22c55e 52%, #86efac 100%);
   }
 
   .link-btn.blprimary:hover {
-    background: linear-gradient(
-            145deg,
-            var(--lvrs-accent-base-teal),
-            var(--lvrs-accent-dim-green-vivid)
-    );
+    box-shadow: 0 18px 34px rgb(34 197 94 / 24%);
+  }
+
+  .link-btn:hover {
+    transform: translateY(-3px);
+  }
+
+  .link-btn:hover::after {
+    opacity: 1;
+    animation: sheen 900ms ease;
+  }
+
+  .link-btn:focus-visible {
+    outline: 3px solid rgb(37 99 235 / 18%);
+    outline-offset: 3px;
+  }
+
+  @keyframes sheen {
+    from {
+      transform: translateX(0) rotate(18deg);
+    }
+
+    to {
+      transform: translateX(520%) rotate(18deg);
+    }
   }
 
   @media (max-width: 640px) {
-    h1 {
-      font-size: var(--font-title);
+    .tree-card {
+      --card-radius: 28px;
+      padding: 24px 20px;
+    }
+
+    .avatar-wrap {
+      width: 92px;
+      height: 92px;
+      margin-bottom: 18px;
+    }
+
+    .brand-title {
+      font-size: clamp(2rem, 11vw, 3.25rem);
+    }
+
+    .brand-handle {
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+    }
+
+    .link-btn {
+      --button-radius: 18px;
+      min-height: 58px;
+      padding: 16px 18px;
     }
   }
 </style>
